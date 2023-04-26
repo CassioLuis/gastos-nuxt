@@ -1,14 +1,27 @@
 <template>
-  <div class="p-1 border rounded w-1/2">
-    <ul class="w-full">
-      <li class="">
-        <input @keyup.enter="addTodo" placeholder="Digite uma categoria e pressione enter!" class="w-full p-2">
-      </li>
-      <li v-for="categorie in categories" :key="categorie" class="flex justify-between items-center p-2">
-        <span>{{ categorie }}</span>
-        <font-awesome-icon class="cursor-pointer text-red-400" :icon="['fas', 'trash-can']" @click="remove(categorie)" />
-      </li>
-    </ul>
+  <div class="p-4 border rounded w-full">
+    <input @keyup.enter="addCategory" v-model="category.name" placeholder="Digite uma categoria e pressione enter!"
+      class="w-full p-2 text-black rounded mb-4">
+    <table class="w-full rounded">
+      <thead class="text-lg">
+        <tr>
+          <th>Outros</th>
+          <th>Descrição</th>
+          <th>Remover</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in categories">
+          <td class="text-center">
+            <input type="checkbox" class="cursor-pointer" :checked="item.otherPeople" @change="isToAnotherPeopleCategory(item)">
+          </td>
+          <td>{{ item.name }}</td>
+          <td class="text-center">
+            <font-awesome-icon class="cursor-pointer text-red-400" :icon="['fas', 'trash-can']" @click="remove(item)" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 <script>
@@ -17,20 +30,30 @@ import { mapMutations } from 'vuex'
 export default {
   name: 'spentlist',
   layout: 'default',
-
+  data() {
+    return {
+      category: {
+        name: '',
+        otherPeople: false
+      }
+    }
+  },
   computed: {
     categories() {
-      return this.$store.state.categories.list
+      return this.$store.state.categories.categoryList
     }
   },
   methods: {
-    addTodo(e) {
-      this.$store.commit('categories/add', e.target.value)
-      e.target.value = ''
-      console.log(this.categories);
+    addCategory() {
+      this.$store.commit('categories/addCategory', this.category)
+      this.category = {
+        name: '',
+        otherPeople: false
+      }
     },
     ...mapMutations({
-      remove: 'categories/remove'
+      remove: 'categories/remove',
+      isToAnotherPeopleCategory: 'categories/isToAnotherPeopleCategory'
     })
   }
 }

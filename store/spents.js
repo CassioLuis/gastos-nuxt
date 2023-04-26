@@ -98,8 +98,13 @@ export const mutations = {
     if (!confirm('Tem certeza que deseja excluir este item ?')) return
     state.spentList.splice(state.spentList.indexOf(spent), 1)
   },
-  toggle(state, spent) {
+  isACreditCardSpent(state, spent) {
     spent.creditCard = !spent.creditCard
-    console.log(state, spent);
   }
+}
+
+export const getters = {
+  getSpents(state) {
+    return state.spentList
+  },
 }

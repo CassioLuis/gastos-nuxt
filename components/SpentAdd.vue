@@ -1,30 +1,28 @@
 <template>
-  <div class="w-full">
-    <div class="flex flex-col gap-2 border-t pt-4 p-2" v-show="showForm">
-      <div class="flex gap-2">
+  <div class="w-full font-semibold">
+    <div class="flex flex-col gap-2 border-t border-gray-500 pt-4 pb-2" v-show="showForm">
+      <div class="flex gap-2 text-gray-300 text-sm border-gray-600">
         <div class="flex flex-col grow basis-1">
           <label for="date">Data:</label>
-          <!-- <input id="date" type="date" v-model="spent.date" class="border text-center mb-2 h-8 px-2"> -->
           <date-picker id="date" v-model="spent.date" valueType="format"
-            class="w-full text-center mb-2 h-8"></date-picker>
+            class="w-full text-center mb-2 h-8 border-gray-600"></date-picker>
           <label for="description">Descrição:</label>
-          <input id="description" type="text" v-model="spent.description"
-            class="border-white mb-2 h-8 px-2 bg-gray-800 text-white">
+          <input id="description" type="text" v-model="spent.description" v-focus
+            class="mb-2 h-8 px-2 bg-gray-800 text-white border rounded border-gray-600">
         </div>
         <div class="flex flex-col grow basis-1">
           <label for="categories">Categoria:</label>
           <selector :options="categories" v-model="spent.category"
-            class="mb-2 h-8 px-2 bg-gray-800 border-white text-white cursor-pointer" />
+            class="mb-2 h-8 px-2 bg-gray-800 text-white border rounded border-gray-600 cursor-pointer" />
           <label for="spentValue">Valor:</label>
-          <input id="spentValue" type="number" min="1" step="any" v-model="spent.spentValue"
-            class="mb-2 h-8 px-2 bg-gray-800 border-white text-white">
+          <input id="spentValue" type="number" min="1" step="any" v-model="spent.spentValue" @keyup.enter="addSpent"
+            class="mb-2 h-8 px-2 bg-gray-800 text-white border rounded border-gray-600">
         </div>
       </div>
       <div class="w-full flex justify-end gap-1 items-baseline">
         <button @click="showAddSpentForm"
-          class="rounded px-4 hover:bg-red-300 bg-red-500 transition-all h-8 font-semibold">Cancelar</button>
-        <button @click="addSpent"
-          class="rounded px-4 hover:bg-green-300 bg-green-500 transition-all h-8 font-semibold">Salvar</button>
+          class="rounded px-4 hover:bg-red-300 bg-red-400 transition-all h-8">Cancelar</button>
+        <button @click="addSpent" class="rounded px-4 hover:bg-green-300 bg-green-400 transition-all h-8">Salvar</button>
       </div>
     </div>
     <button v-show="showForm ? false : true" @click="showAddSpentForm"
@@ -46,6 +44,7 @@ export default {
   data() {
     return {
       showForm: true,
+      shouldFocus: true,
       spent: {
         id: uuidv4(),
         date: new Date().toISOString().substring(0, 10),
@@ -53,6 +52,13 @@ export default {
         category: '',
         spentValue: '',
         creditCard: true
+      }
+    }
+  }, 
+  directives: {
+    focus: {
+      inserted (el) {
+        el.focus()
       }
     }
   },
@@ -74,7 +80,6 @@ export default {
     },
     addSpent() {
       if (!this.inputValidation(this.spent)) return;
-      console.log(this.spent);
       this.$store.commit('spents/addSpent', this.spent);
       this.spent = {
         date: new Date().toISOString().substring(0, 10),
@@ -83,19 +88,13 @@ export default {
         spentValue: '',
         creditCard: true
       }
+      console.log(this.shouldFocus);
     }
   },
   computed: {
     categories() {
-      return this.$store.state.categories.list
+      return this.$store.state.categories.categoryList
     }
   }
 }
 </script>
-<style>
-/* .mx-input-wrapper,
-.mx-input{
-  height: 100%;
-  width: 100%;
-  cursor: pointer;
-} */</style>

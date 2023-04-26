@@ -1,16 +1,43 @@
 export const state = () => ({
-  list: ["Alimentação", "Streaming", "Transporte"]
+  categoryList: [
+    {
+      name: "Alimentação",
+      otherPeople: false
+    },
+    {
+      name: "Streaming",
+      otherPeople: false
+    },
+    {
+      name: "Transporte",
+      otherPeople: false
+    },
+    {
+      name: "Mercado",
+      otherPeople: false
+    },
+    {
+      name: "Pai",
+      otherPeople: true
+    }
+  ]
 })
 
 export const mutations = {
-  add(state, text) {
-    state.list.push({
-      text,
-      done: false
-    })
+  addCategory(state, category) {
+    state.categoryList.push(category)
   },
-  remove(state, categorie) {
+  remove(state, category) {
     if (!confirm('Tem certeza que deseja excluir este item ?')) return
-    state.list.splice(state.list.indexOf(categorie), 1)
+    state.categoryList.splice(state.categoryList.indexOf(category), 1)
+  },
+  isToAnotherPeopleCategory(state, category) {
+    category.otherPeople = !category.otherPeople
   }
+}
+
+export const getters = {
+  getCategories(state) {
+    return state.categoryList
+  },
 }

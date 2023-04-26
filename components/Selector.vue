@@ -1,6 +1,6 @@
 <template>
-  <select v-model="selectedOption" >
-    <option v-for="option in options" :value="option">{{ option }}</option>
+  <select v-model="selectedOption">
+    <option v-for="option in options" :value="option.name" class="space-y-4 text-lg p-20">{{ option.name }}</option>
   </select>
 </template>
 <script>
