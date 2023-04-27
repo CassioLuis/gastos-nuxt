@@ -1,13 +1,13 @@
 <template>
   <div class="font-semibold text-sm">
     <table class="h-full w-full rounded">
-      <thead class="text-lg">
+      <thead class="text-lg text-left pb-4">
         <tr class="border-b border-gray-600">
           <th class="w-1"></th>
           <th class="w-1">Data</th>
           <th class="w-10">Descrição</th>
           <th class="w-1">Categoria</th>
-          <th class="w-10">Valor</th>
+          <th class="w-10 text-center">Valor</th>
           <th class="w-1"></th>
         </tr>
       </thead>
@@ -16,7 +16,7 @@
           <td class="text-center">
             <input class="cursor-pointer" type="checkbox" :checked="item.creditCard" @change="isACreditCardSpent(item)">
           </td>
-          <td class="pl-2 text-left text-xs text-gray-400">{{ item.presentationDate }}</td>
+          <td class="text-left text-xs text-gray-400">{{ item.presentationDate }}</td>
           <td>{{ item.description }}</td>
           <td>
             <span

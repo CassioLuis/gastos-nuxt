@@ -3,14 +3,14 @@
     <input @keyup.enter="addCategory" v-model="category.name" placeholder="Digite uma categoria e pressione enter!"
       class="w-full p-2 text-black rounded mb-4">
     <table class="w-full rounded">
-      <thead class="text-lg">
+      <thead class="text-xl border-b border-gray-600">
         <tr>
           <th>Outros</th>
-          <th>Descrição</th>
+          <th class="text-left">Descrição</th>
           <th>Remover</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="text-sm">
         <tr v-for="item in categories">
           <td class="text-center">
             <input type="checkbox" class="cursor-pointer" :checked="item.otherPeople" @change="isToAnotherPeopleCategory(item)">

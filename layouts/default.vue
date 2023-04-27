@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center pt-4 bg-gray-800 h-screen text-white overflow-auto font-roboto antialiased">
+  <div class="flex justify-center pt-4 bg-gray-800 h-screen text-gray-200 font-roboto overflow-auto antialiased">
     <div class="flex flex-col justify-start box-border w-[1000px]">
       <div class="pb-2 flex gap-1 w-full">
         <NuxtLink v-for="{ name, route, id } in menuItens" :key="id" :to="route"
@@ -18,7 +18,7 @@ export default {
       menuItens: [
         {
           name: 'Gastos',
-          route: '/spentlist',
+          route: '/spentlist/totalizer',
         },
         {
           name: 'Categorias',
@@ -42,7 +42,7 @@ export default {
 ::-webkit-scrollbar-track {
   @apply bg-gray-800
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
   @apply bg-gray-500 rounded-sm

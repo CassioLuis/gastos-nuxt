@@ -14,8 +14,15 @@
         <SpentAdd />
       </div>
     </div>
-    <div class="flex flex-col justify-between border-gray-500 flex-grow basis-1 border rounded p-4">
-      <p class="text-center border-b border-gray-500 text-lg">Resumo</p>
+    <div class="flex flex-col justify-between border-gray-500 flex-grow basis-1 border rounded p-4 font-semibold">
+      <div class="pb-2 flex gap-1">
+        <NuxtLink v-for="{ name, route, id } in menuItens" :key="id" :to="route"
+          class="cursor-pointer border rounded px-2">
+          {{ name }}
+        </NuxtLink>
+      </div>
+      <NuxtChild :month="month" class="grow"/>
+      <!-- <p class="text-center border-b border-gray-500 text-lg">Resumo</p>
       <div class="grow pt-4">
         <TotalizerCard :totalizer="totalizerSpents" />
       </div>
@@ -29,15 +36,15 @@
           <span>Debitos Outros (-)</span>
           <span>{{ sumDebits(true) }}</span>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 <script>
-import SpentAdd from '../../components/SpentAdd.vue'
-import Spent from '../../components/Spent.vue'
+import SpentAdd from '../components/SpentAdd.vue'
+import Spent from '../components/Spent.vue'
 import DatePicker from 'vue2-datepicker';
-import TotalizerCard from '../../components/TotalizerCard.vue';
+import TotalizerCard from '../components/TotalizerCard.vue';
 import 'vue2-datepicker/index.css';
 import 'vue2-datepicker/locale/pt-br';
 import { mapGetters } from 'vuex'
