@@ -1,6 +1,6 @@
 <template>
   <div class="w-full font-semibold">
-    <div class="flex flex-col gap-2 border-t border-gray-500 pt-4 pb-2" v-show="showForm">
+    <div class="flex flex-col gap-2 border-t border-gray-500 pt-4" v-show="showForm">
       <div class="flex gap-2 text-gray-300 text-sm border-gray-600">
         <div class="flex flex-col grow basis-1">
           <label for="date">Data:</label>
@@ -20,9 +20,8 @@
         </div>
       </div>
       <div class="w-full flex justify-end gap-1 items-baseline">
-        <button @click="showAddSpentForm"
-          class="rounded px-4 hover:bg-red-300 bg-red-400 transition-all h-8">Cancelar</button>
-        <button @click="addSpent" class="rounded px-4 hover:bg-green-300 bg-green-400 transition-all h-8">Salvar</button>
+        <button @click="showAddSpentForm" class="border border-gray-500 rounded px-4 hover:bg-gray-700 bg-gray-800 transition-all h-8">Cancelar</button>
+        <button @click="addSpent" class="border border-gray-500 rounded px-4 hover:bg-gray-700 bg-gray-800 transition-all h-8">Salvar</button>
       </div>
     </div>
     <button v-show="showForm ? false : true" @click="showAddSpentForm"

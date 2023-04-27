@@ -62,6 +62,134 @@ export const state = () => ({
       category: 'Alimentação',
       spentValue: 390,
       creditCard: true
+    }, {
+      id: 7,
+      presentationDate: '4 ABR.',
+      date: '2023-04-04',
+      description: 'Machado Supermercado',
+      category: 'Alimentação',
+      spentValue: 390,
+      creditCard: true
+    }, {
+      id: 7,
+      presentationDate: '4 ABR.',
+      date: '2023-04-04',
+      description: 'Machado Supermercado',
+      category: 'Alimentação',
+      spentValue: 390,
+      creditCard: true
+    }, {
+      id: 7,
+      presentationDate: '4 ABR.',
+      date: '2023-04-04',
+      description: 'Machado Supermercado',
+      category: 'Alimentação',
+      spentValue: 390,
+      creditCard: true
+    }, {
+      id: 7,
+      presentationDate: '4 ABR.',
+      date: '2023-04-04',
+      description: 'Machado Supermercado',
+      category: 'Alimentação',
+      spentValue: 390,
+      creditCard: true
+    }, {
+      id: 7,
+      presentationDate: '4 ABR.',
+      date: '2023-04-04',
+      description: 'Machado Supermercado',
+      category: 'Alimentação',
+      spentValue: 390,
+      creditCard: true
+    }, {
+      id: 7,
+      presentationDate: '4 ABR.',
+      date: '2023-04-04',
+      description: 'Machado Supermercado',
+      category: 'Alimentação',
+      spentValue: 390,
+      creditCard: true
+    }, {
+      id: 7,
+      presentationDate: '4 ABR.',
+      date: '2023-04-04',
+      description: 'Machado Supermercado',
+      category: 'Alimentação',
+      spentValue: 390,
+      creditCard: true
+    }, {
+      id: 7,
+      presentationDate: '4 ABR.',
+      date: '2023-04-04',
+      description: 'Machado Supermercado',
+      category: 'Alimentação',
+      spentValue: 390,
+      creditCard: true
+    }, {
+      id: 7,
+      presentationDate: '4 ABR.',
+      date: '2023-04-04',
+      description: 'Machado Supermercado',
+      category: 'Alimentação',
+      spentValue: 390,
+      creditCard: true
+    }, {
+      id: 7,
+      presentationDate: '4 ABR.',
+      date: '2023-04-04',
+      description: 'Machado Supermercado',
+      category: 'Alimentação',
+      spentValue: 390,
+      creditCard: true
+    }, {
+      id: 7,
+      presentationDate: '4 ABR.',
+      date: '2023-04-04',
+      description: 'Machado Supermercado',
+      category: 'Alimentação',
+      spentValue: 390,
+      creditCard: true
+    }, {
+      id: 7,
+      presentationDate: '4 ABR.',
+      date: '2023-04-04',
+      description: 'Machado Supermercado',
+      category: 'Alimentação',
+      spentValue: 390,
+      creditCard: true
+    }, {
+      id: 7,
+      presentationDate: '4 ABR.',
+      date: '2023-04-04',
+      description: 'Machado Supermercado',
+      category: 'Alimentação',
+      spentValue: 390,
+      creditCard: true
+    }, {
+      id: 7,
+      presentationDate: '4 ABR.',
+      date: '2023-04-04',
+      description: 'Machado Supermercado',
+      category: 'Alimentação',
+      spentValue: 390,
+      creditCard: true
+    }, {
+      id: 7,
+      presentationDate: '4 ABR.',
+      date: '2023-04-04',
+      description: 'Machado Supermercado',
+      category: 'Alimentação',
+      spentValue: 390,
+      creditCard: true
+    }, {
+      id: 7,
+      presentationDate: '4 ABR.',
+      date: '2023-04-04',
+      description: 'Machado Supermercado',
+      category: 'Alimentação',
+      spentValue: 390,
+      creditCard: true
     },
     {
       id: 8,

@@ -1,20 +1,20 @@
 <template>
   <div class="flex w-full gap-3">
-    <div class="flex flex-col flex-grow basis-1 gap-3">
-      <div class="flex h-16 border rounded p-1">
+    <div class="flex flex-col grow basis-1 gap-3">
+      <div class="flex h-16 border rounded border-gray-500 p-1">
         <date-picker v-model="month" type="month" value-type
           class="flex-grow basis-1 h-full text-center cursor-pointer" />
         <div class="flex items-center justify-center flex-grow basis-1 h-full font-semibold">{{
           convertToCurrency(sumTotal) }}</div>
       </div>
-      <div class="flex flex-col gap-1 p-2 flex-grow basis-1 border rounded">
-        <div class="flex flex-col gap-1 box-border overflow-y-auto h-[600px]">
+      <div class="flex flex-col gap-2 p-4 grow basis-1 border rounded border-gray-500">
+        <div class="flex flex-col grow box-border h-[600px] overflow-y-auto">
           <Spent :spent-list="spents" />
         </div>
         <SpentAdd />
       </div>
     </div>
-    <div class="flex flex-col justify-between flex-grow basis-1 border rounded p-4">
+    <div class="flex flex-col justify-between border-gray-500 flex-grow basis-1 border rounded p-4">
       <p class="text-center border-b border-gray-500 text-lg">Resumo</p>
       <div class="grow pt-4">
         <TotalizerCard :totalizer="totalizerSpents" />
@@ -106,31 +106,24 @@ export default {
 <style>
 .mx-input-wrapper,
 .mx-input {
-  height: 100%;
-  width: 100%;
-  cursor: pointer;
-  text-align: center;
-  font-weight: 600;
-  font-size: 1rem;
-  background-color: rgb(31 41 55);
-  color: white;
+  @apply h-full w-full cursor-pointer text-center font-semibold text-sm bg-gray-800 text-white border border-gray-600 rounded
 }
 
-.mx-icon-calendar {
-  color: white;
+.mx-icon-calendar,
+.mx-icon-clear {
+  @apply text-white
 }
 
 .mx-calendar-header,
 .mx-calendar {
-  background-color: rgb(31 41 55);
-  color: white;
+  @apply bg-gray-800 text-white rounded
 }
 
 .mx-calendar-content .cell.active {
-  background-color: rgb(75 85 99);
+  @apply bg-gray-600
 }
 
 .cell:hover {
-  background-color: rgb(209 213 219) !important;
+  @apply bg-gray-300
 }
 </style>
