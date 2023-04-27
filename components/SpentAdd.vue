@@ -4,8 +4,8 @@
       <div class="flex gap-2 text-gray-300 text-sm border-gray-600">
         <div class="flex flex-col grow basis-1">
           <label for="date">Data:</label>
-          <date-picker id="date" v-model="spent.date" valueType="format"
-            class="w-full text-center mb-2 h-8 border-gray-600"></date-picker>
+          <DatePicker id="date" v-model="spent.date" valueType="format"
+            class="w-full text-center mb-2 h-8 border-gray-600" />
           <label for="description">Descrição:</label>
           <input id="description" type="text" v-model="spent.description" v-focus
             class="mb-2 h-8 px-2 bg-gray-800 text-white border rounded border-gray-600">
@@ -20,8 +20,10 @@
         </div>
       </div>
       <div class="w-full flex justify-end gap-1 items-baseline">
-        <button @click="showAddSpentForm" class="border border-gray-500 rounded px-4 hover:bg-gray-700 bg-gray-800 transition-all h-8">Cancelar</button>
-        <button @click="addSpent" class="border border-gray-500 rounded px-4 hover:bg-gray-700 bg-gray-800 transition-all h-8">Salvar</button>
+        <button @click="showAddSpentForm"
+          class="btn">Cancelar</button>
+        <button @click="addSpent"
+          class="btn">Salvar</button>
       </div>
     </div>
     <button v-show="showForm ? false : true" @click="showAddSpentForm"
@@ -53,10 +55,10 @@ export default {
         creditCard: true
       }
     }
-  }, 
+  },
   directives: {
     focus: {
-      inserted (el) {
+      inserted(el) {
         el.focus()
       }
     }

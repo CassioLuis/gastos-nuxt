@@ -3,7 +3,7 @@
     <div class="flex flex-col justify-start box-border w-[1000px]">
       <div class="pb-2 flex gap-1 w-full">
         <NuxtLink v-for="{ name, route, id } in menuItens" :key="id" :to="route"
-          class="cursor-pointer border rounded px-2">
+          class="btn">
           {{ name }}
         </NuxtLink>
       </div>
@@ -51,5 +51,9 @@ export default {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-600
+}
+
+.btn {
+  @apply flex items-center rounded px-4 border border-gray-500 hover:border-gray-400 bg-gray-800 hover:bg-gray-700 hover:text-gray-100 transition-all h-8
 }
 </style>

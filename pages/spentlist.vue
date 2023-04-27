@@ -2,7 +2,7 @@
   <div class="flex w-full gap-3">
     <div class="flex flex-col grow basis-1 gap-3">
       <div class="flex h-16 border rounded border-gray-500 p-1">
-        <date-picker v-model="month" type="month" value-type
+        <DatePicker v-model="month" type="month" value-type
           class="flex-grow basis-1 h-full text-center cursor-pointer" />
         <div class="flex items-center justify-center flex-grow basis-1 h-full font-semibold">{{
           convertToCurrency(sumTotal) }}</div>
@@ -17,26 +17,11 @@
     <div class="flex flex-col justify-between border-gray-500 flex-grow basis-1 border rounded p-4 font-semibold">
       <div class="pb-2 flex gap-1">
         <NuxtLink v-for="{ name, route, id } in menuItens" :key="id" :to="route"
-          class="cursor-pointer border rounded px-2">
+          class="btn">
           {{ name }}
         </NuxtLink>
       </div>
       <NuxtChild :month="month" class="grow"/>
-      <!-- <p class="text-center border-b border-gray-500 text-lg">Resumo</p>
-      <div class="grow pt-4">
-        <TotalizerCard :totalizer="totalizerSpents" />
-      </div>
-      <div>
-        <p class="text-center border-b border-gray-500 mb-4">Totais</p>
-        <div class="flex justify-between">
-          <span>Meus Debitos (-)</span>
-          <span>{{ sumDebits(false) }}</span>
-        </div>
-        <div class="flex justify-between">
-          <span>Debitos Outros (-)</span>
-          <span>{{ sumDebits(true) }}</span>
-        </div>
-      </div> -->
     </div>
   </div>
 </template>
