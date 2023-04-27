@@ -7,6 +7,7 @@
           <th class="w-1">Data</th>
           <th class="w-10">Descrição</th>
           <th class="w-1">Categoria</th>
+          <th class="w-1 text-center">Parc.</th>
           <th class="w-10 text-center">Valor</th>
           <th class="w-1"></th>
         </tr>
@@ -23,8 +24,8 @@
               class="grow basis-1 p-1 flex items-center justify-center align-baseline rounded bg-red-400 text-xs font-semibold text-gray-200">{{
                 item.category }}</span>
           </td>
-          <td class="text-right">{{ convertToCurrency(item.spentValue) }}
-          </td>
+          <td class="text-center">{{ item.presentationQuota }} </td>
+          <td class="text-right">{{ convertToCurrency(item.spentValue) }} </td>
           <td class="text-center">
             <font-awesome-icon class="cursor-pointer text-red-400" :icon="['fas', 'trash-can']" @click="remove(item)" />
           </td>

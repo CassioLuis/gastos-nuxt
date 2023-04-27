@@ -56,4 +56,7 @@ export default {
 .btn {
   @apply flex items-center rounded px-4 border border-gray-500 hover:border-gray-400 bg-gray-800 hover:bg-gray-700 hover:text-gray-100 transition-all h-8
 }
+.input {
+  @apply mb-2 h-8 px-2 bg-gray-800 text-white border rounded border-gray-600 cursor-pointer
+}
 </style>

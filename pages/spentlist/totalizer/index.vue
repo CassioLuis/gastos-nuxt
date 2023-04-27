@@ -79,9 +79,6 @@ export default {
         }, {})
       ).map(([category, spentValue]) => ({ category, spentValue }));
     },
-    show() {
-      console.log(this.month);
-    },
     ...mapGetters({
       getCategories: 'categories/getCategories'
     })

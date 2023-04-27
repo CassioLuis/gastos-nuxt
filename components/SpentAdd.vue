@@ -7,23 +7,21 @@
           <DatePicker id="date" v-model="spent.date" valueType="format"
             class="w-full text-center mb-2 h-8 border-gray-600" />
           <label for="description">Descrição:</label>
-          <input id="description" type="text" v-model="spent.description" v-focus
-            class="mb-2 h-8 px-2 bg-gray-800 text-white border rounded border-gray-600">
+          <input id="description" type="text" v-model="spent.description" v-focus class="input">
+          <label for="spentValue">Parc:</label>
+          <Selector :options="['2x', '3x', '4x', '5x', '24x']" v-model="spent.quota" class="input w-16" />
         </div>
         <div class="flex flex-col grow basis-1">
           <label for="categories">Categoria:</label>
-          <selector :options="categories" v-model="spent.category"
-            class="mb-2 h-8 px-2 bg-gray-800 text-white border rounded border-gray-600 cursor-pointer" />
+          <Selector :options="categories" v-model="spent.category" class="input" />
           <label for="spentValue">Valor:</label>
           <input id="spentValue" type="number" min="1" step="any" v-model="spent.spentValue" @keyup.enter="addSpent"
-            class="mb-2 h-8 px-2 bg-gray-800 text-white border rounded border-gray-600">
+            class="input">
         </div>
       </div>
       <div class="w-full flex justify-end gap-1 items-baseline">
-        <button @click="showAddSpentForm"
-          class="btn">Cancelar</button>
-        <button @click="addSpent"
-          class="btn">Salvar</button>
+        <button @click="showAddSpentForm" class="btn">Cancelar</button>
+        <button @click="addSpent" class="btn">Salvar</button>
       </div>
     </div>
     <button v-show="showForm ? false : true" @click="showAddSpentForm"
@@ -52,7 +50,8 @@ export default {
         description: '',
         category: '',
         spentValue: '',
-        creditCard: true
+        creditCard: true,
+        quota: ''
       }
     }
   },
@@ -87,9 +86,9 @@ export default {
         description: '',
         category: this.spent.category,
         spentValue: '',
-        creditCard: true
+        creditCard: true,
+        quota: ''
       }
-      console.log(this.shouldFocus);
     }
   },
   computed: {
