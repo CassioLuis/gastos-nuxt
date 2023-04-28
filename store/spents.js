@@ -35,6 +35,33 @@ export const state = () => ({
       category: 'Alimentação',
       spentValue: 180,
       creditCard: true
+    },
+    {
+      id: 3,
+      presentationDate: '4 ABR.',
+      date: '2023-04-04',
+      description: 'Machado Supermercado',
+      category: 'Alimentação',
+      spentValue: 390,
+      creditCard: true
+    },
+    {
+      id: 4,
+      presentationDate: '4 ABR.',
+      date: '2023-04-04',
+      description: 'Agua',
+      category: 'Água e Esgoto',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 4,
+      presentationDate: '4 ABR.',
+      date: '2023-04-04',
+      description: 'Lanche',
+      category: 'Lanche',
+      spentValue: 49,
+      creditCard: true
     }
   ]
 })

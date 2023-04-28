@@ -96,6 +96,12 @@ export default {
       getCategories: 'categories/getCategories'
     })
   }
+  // ,
+  // watch: {
+  //   month () {
+  //     console.log(this.spents);
+  //   }
+  // }
 }
 </script>
 <style>
