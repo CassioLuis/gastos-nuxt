@@ -3,7 +3,7 @@
     <div class="flex flex-col justify-between h-full">
       <p class="text-center border-b border-gray-700 text-lg">Resumo</p>
       <div class="grow pt-4">
-        <TotalizerCard :totalizer="totalizerSpents" />
+        <TotalizerCard :totalizer="totalizerSpentsDetails" />
       </div>
       <div>
         <p class="text-center border-b border-gray-700 mb-4">Totais</p>
@@ -51,9 +51,6 @@ export default {
     spents() {
       return this.$store.state.spents.spentList.filter(spent => spent.date.substring(0, 7) === this.month)
     },
-    sumTotal() {
-      return this.spents.filter(spent => spent.creditCard).reduce((acc, spent) => acc + this.convertToNumber(spent.spentValue), 0)
-    },
     totalizerSpents() {
       return Object.entries(
         this.spents.reduce((acc, spent) => {
@@ -64,9 +61,28 @@ export default {
         }, {})
       ).map(([category, spentValue]) => ({ category, spentValue }));
     },
+    totalizerSpentsDetails() {
+      const categories = [...new Set(this.spents.map(spent => spent.category))];
+
+      const totalizer = categories.map(category => {
+        const spentsForCategory = this.spents.filter(spent => spent.category === category);
+        const totalSpentForCategory = spentsForCategory.reduce((acc, spent) => acc + Number(spent.spentValue), 0);
+        return {
+          category: category,
+          totalSpent: totalSpentForCategory,
+          spents: spentsForCategory
+        };
+      });
+      return totalizer
+    },
     ...mapGetters({
       getCategories: 'categories/getCategories'
     })
+  },
+  watch: {
+    spents() {
+      console.log(JSON.stringify(this.totalizerSpentsDetails, null, 2));
+    }
   }
 }
 

@@ -1,14 +1,14 @@
 <template>
   <div class="font-semibold text-sm">
     <table class="h-full w-full rounded">
-      <thead class="text-lg text-left pb-4">
+      <thead class="text-lg text-left">
         <tr class="border-b border-gray-600">
           <th class="cursor-pointer w-1"></th>
-          <th class="align-middle gap-1 cursor-pointer w-1" @click="sortBy('date')">Data<font-awesome-icon desabled :icon="['fas', 'sort-down']" size="xs"/></th>
-          <th class="align-middle gap-1 cursor-pointer w-10" @click="sortBy('description')">Descrição<font-awesome-icon :icon="['fas', 'sort-up']" size="xs"/></th>
-          <th class="align-middle gap-1 cursor-pointer w-1" @click="sortBy('category')">Categoria<font-awesome-icon :icon="['fas', 'sort-up']" size="xs"/></th>
-          <th class="align-middle gap-1 cursor-pointer w-1 text-center" @click="sortBy('quota')">Parc.<font-awesome-icon :icon="['fas', 'sort-up']" size="xs"/></th>
-          <th class="align-middle gap-1 cursor-pointer w-10 text-center" @click="sortBy('spentValue')">Valor<font-awesome-icon :icon="['fas', 'sort-up']" size="xs"/></th>
+          <th class="cursor-pointer w-10" @click="sortBy('date')">Data <font-awesome-icon v-if="sortKey === 'date'" :icon="icon" size="xs" /></th>
+          <th class="cursor-pointer w-10" @click="sortBy('description')">Descrição <font-awesome-icon v-if="sortKey === 'description'" :icon="icon" size="xs" /></th>
+          <th class="cursor-pointer w-1" @click="sortBy('category')">Categoria <font-awesome-icon v-if="sortKey === 'category'" :icon="icon" size="xs" /></th>
+          <th class="cursor-pointer w-1 text-center" @click="sortBy('quota')">Parc. <font-awesome-icon v-if="sortKey === 'quota'" :icon="icon" size="xs" /></th>
+          <th class="cursor-pointer w-10 text-center" @click="sortBy('spentValue')">Valor <font-awesome-icon v-if="sortKey === 'spentValue'" :icon="icon" size="xs" /></th>
           <th class="cursor-pointer w-1"></th>
         </tr>
       </thead>
@@ -21,7 +21,7 @@
           <td>{{ item.description }}</td>
           <td>
             <span
-              class="grow basis-1 p-1 flex items-center justify-center align-baseline rounded bg-red-400 text-xs font-semibold text-gray-200">{{
+              class="p-1 flex items-center justify-center rounded bg-red-400 text-xs font-semibold text-gray-200">{{
                 item.category }}</span>
           </td>
           <td class="text-center">{{ item.presentationQuota }} </td>
@@ -48,7 +48,8 @@ export default {
   data() {
     return {
       sortKey: '',
-      sortDirection: 'asc'
+      sortDirection: 'asc',
+      icon: ['fas', 'sort-up']
     }
   },
   methods: {
@@ -83,10 +84,19 @@ export default {
         return 0;
       });
     }
-  }
-  ,
-  mounted() {
-    console.log(this.newSortedSpentList);
   },
+  watch: {
+    sortDirection() {
+      if (this.icon.includes('sort-down')) return this.icon[1] = 'sort-up'
+      if (this.icon.includes('sort-up')) return this.icon[1] = 'sort-down'
+    }
+  }
 }
 </script>
+<style>
+svg {
+  display: flex;
+  align-items: center;
+  padding-bottom: -5px;
+}
+</style>

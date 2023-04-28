@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center pt-4 bg-gray-800 h-screen text-gray-300 font-roboto overflow-auto antialiased">
-    <div class="flex flex-col justify-start w-[1000px]">
+    <div class="flex flex-col justify-start w-[1200px]">
       <div class="pb-2 flex gap-1 w-full">
         <NuxtLink v-for="{ name, route, id } in menuItens" :key="id" :to="route"
           class="btn">
