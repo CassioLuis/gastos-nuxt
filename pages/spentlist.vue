@@ -7,11 +7,14 @@
         <div class="flex items-center justify-center flex-grow basis-1 h-full font-semibold">{{
           convertToCurrency(sumTotal) }}</div>
       </div>
-      <div class="flex flex-col gap-2 p-4 grow basis-1 border rounded border-gray-500">
-        <div class="flex flex-col grow box-border h-[600px] overflow-y-auto">
+
+      <div class="flex flex-col gap-4 p-4 border rounded border-gray-500">
+        <div class="flex flex-col overflow-y-auto h-[500px]">
           <Spent :spent-list="spents" />
         </div>
-        <SpentAdd />
+        <div>
+          <SpentAdd />
+        </div>
       </div>
     </div>
     <div class="flex flex-col justify-between border-gray-500 flex-grow basis-1 border rounded p-4 font-semibold">
@@ -96,9 +99,12 @@ export default {
 }
 </script>
 <style>
-.mx-input-wrapper,
 .mx-input {
-  @apply h-full w-full cursor-pointer text-center font-semibold text-sm bg-gray-800 text-white border border-gray-600 rounded
+  @apply h-full w-full cursor-pointer text-center font-semibold text-sm bg-gray-800 text-white rounded border border-gray-600
+}
+
+.mx-input-wrapper {
+  @apply h-full bg-gray-800
 }
 
 .mx-icon-calendar,

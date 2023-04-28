@@ -1,11 +1,11 @@
 export const state = () => ({
   categoryList: [
     {
-      name: "Alimentação",
+      name: "Lanche",
       otherPeople: false
     },
     {
-      name: "Streaming",
+      name: "Lazer",
       otherPeople: false
     },
     {
@@ -13,12 +13,104 @@ export const state = () => ({
       otherPeople: false
     },
     {
+      name: "Vestuario",
+      otherPeople: false
+    },
+    {
+      name: "Farmacia",
+      otherPeople: false
+    },
+    {
       name: "Mercado",
+      otherPeople: false
+    },
+    {
+      name: "Viagem",
+      otherPeople: false
+    },
+    {
+      name: "Robby",
+      otherPeople: false
+    },
+    {
+      name: "Cursos",
+      otherPeople: false
+    },
+    {
+      name: "Casa",
+      otherPeople: false
+    },
+    {
+      name: "Uso Pessoal",
+      otherPeople: false
+    },
+    {
+      name: "Carro",
+      otherPeople: false
+    },
+    {
+      name: "Trabalho",
+      otherPeople: false
+    },
+    {
+      name: "Pet",
+      otherPeople: false
+    },
+    {
+      name: "Outras",
+      otherPeople: false
+    },
+    {
+      name: "Medico",
+      otherPeople: false
+    },
+    {
+      name: "Presente",
+      otherPeople: false
+    },
+    {
+      name: "Comp .de Terceiros",
+      otherPeople: false
+    },
+    {
+      name: "Energia",
+      otherPeople: false
+    },
+    {
+      name: "Internet",
       otherPeople: false
     },
     {
       name: "Pai",
       otherPeople: true
+    },
+    {
+      name: "Água e Esgoto",
+      otherPeople: false
+    },
+    {
+      name: "Mercado Dividir",
+      otherPeople: false
+    },
+    {
+      name: "Farmacia Meu",
+      otherPeople: false
+    },
+    {
+      name: "Farmacia Pai",
+      otherPeople: true
+    },
+    {
+      name: "Streaming",
+      otherPeople: false
+    },
+    {
+      name: "Alimentação",
+      otherPeople: false,
+    },
+    {
+      name: "Casa Dividir",
+      otherPeople: false
     }
   ]
 })
@@ -41,3 +133,4 @@ export const getters = {
     return state.categoryList
   },
 }
+

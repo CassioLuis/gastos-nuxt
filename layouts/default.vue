@@ -1,6 +1,6 @@
 <template>
-  <div class="flex justify-center pt-4 bg-gray-800 h-screen text-gray-200 font-roboto overflow-auto antialiased">
-    <div class="flex flex-col justify-start box-border w-[1000px]">
+  <div class="flex justify-center pt-4 bg-gray-800 h-screen text-gray-300 font-roboto overflow-auto antialiased">
+    <div class="flex flex-col justify-start w-[1000px]">
       <div class="pb-2 flex gap-1 w-full">
         <NuxtLink v-for="{ name, route, id } in menuItens" :key="id" :to="route"
           class="btn">
@@ -32,7 +32,6 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Domine&family=Roboto&display=swap');
-
 /* width */
 ::-webkit-scrollbar {
   @apply w-2 rounded
@@ -54,8 +53,9 @@ export default {
 }
 
 .btn {
-  @apply flex items-center rounded px-4 border border-gray-500 hover:border-gray-400 bg-gray-800 hover:bg-gray-700 hover:text-gray-100 transition-all h-8
+  @apply flex items-center rounded px-4 border border-gray-500 hover:border-gray-400 hover:rounded-sm bg-gray-800 hover:bg-gray-700 hover:text-gray-100 transition-all h-8
 }
+
 .input {
   @apply mb-2 h-8 px-2 bg-gray-800 text-white border rounded border-gray-600 cursor-pointer
 }

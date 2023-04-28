@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="flex flex-col justify-between h-full">
-      <p class="text-center border-b border-gray-500 text-lg">Resumo</p>
+      <p class="text-center border-b border-gray-700 text-lg">Resumo</p>
       <div class="grow pt-4">
         <TotalizerCard :totalizer="totalizerSpents" />
       </div>
       <div>
-        <p class="text-center border-b border-gray-500 mb-4">Totais</p>
+        <p class="text-center border-b border-gray-700 mb-4">Totais</p>
         <div class="flex justify-between">
           <span>Meus Debitos (-)</span>
           <span>{{ sumDebits(false) }}</span>
@@ -25,25 +25,10 @@ import { mapGetters } from 'vuex'
 
 export default {
   components: { TotalizerCard },
-  // layout: 'default',
   props: {
     month: {
       type: String,
       required: true
-    }
-  },
-  data() {
-    return {
-      menuItens: [
-        {
-          name: 'Resumo',
-          route: '/spentlist/totalizer',
-        },
-        {
-          name: 'Grafico',
-          route: '/spentlist/grafico',
-        }
-      ]
     }
   },
   methods: {

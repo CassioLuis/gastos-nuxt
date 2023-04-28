@@ -35,24 +35,6 @@ export const state = () => ({
       category: 'Alimentação',
       spentValue: 180,
       creditCard: true
-    },
-    {
-      id: 5,
-      presentationDate: '4 ABR.',
-      date: '2023-04-04',
-      description: 'Mercado',
-      category: 'Alimentação',
-      spentValue: 500,
-      creditCard: true
-    },
-    {
-      id: 6,
-      presentationDate: '4 ABR.',
-      date: '2023-04-04',
-      description: 'You Tube',
-      category: 'Streaming',
-      spentValue: 39,
-      creditCard: true
     }
   ]
 })
@@ -78,26 +60,30 @@ export const mutations = {
     return `${day} ${month.toUpperCase()}.`
   },
 
-  addSpent(state, payload) {
-    if (!payload.quota) return state.spentList.push({ ...payload, presentationDate: mutations.convertDateToStringDate(payload.date) })
-
-    const parc = payload.quota.match(/\d+/g)
-    const quantityOfParc = parseInt(parc[0])
-
+  createNextSpentsForQuotas (param) {
+    const quantityOfParc = parseInt(param.quota)
+    const date = mutations.convertDateStringToUTCDate(param.date)
+    let month = date.getMonth();
+    const newArrPayload = []
     for (let i = 1; i <= quantityOfParc; i++) {
-      const date = mutations.convertDateStringToUTCDate(payload.date)
-      let month = date.getMonth();
       const nextMonth = date.setMonth(month + i - 1)
       const newDate = new Date(nextMonth)
       const converted = newDate.toISOString().substring(0,10)
       const newPayload = {
-        ...payload,
+        ...param,
         date: converted,
         presentationQuota: `${i}/${quantityOfParc}`,
         presentationDate: mutations.convertDateToStringDate(converted)
       }
-      state.spentList.push(newPayload)
+      newArrPayload.push(newPayload)
     }
+    return newArrPayload
+  },
+
+  addSpent(state, payload) {
+    if (!payload.quota)
+    return state.spentList.push({ ...payload, presentationDate: mutations.convertDateToStringDate(payload.date) })
+    return state.spentList.push(...mutations.createNextSpentsForQuotas(payload));
   },
 
   remove(state, spent) {
