@@ -65,15 +65,7 @@ export default {
     },
     isCategoryOfOthers(param) {
       return this.getCategories.filter(item => item.otherPeople === param).map(item => item.name)
-    },
-    sumDebits(param) {
-      const debits = this.totalizerSpents.reduce((acc, item) => {
-        if (item.category.toLowerCase().includes('dividir')) return acc + item.spentValue / 2;
-        if (this.isCategoryOfOthers(param).includes(item.category)) return acc + item.spentValue
-        return acc
-      }, 0)
-      return this.convertToCurrency(debits)
-    },
+    }
   },
   computed: {
     spents() {
@@ -82,26 +74,20 @@ export default {
     sumTotal() {
       return this.spents.filter(spent => spent.creditCard).reduce((acc, spent) => acc + this.convertToNumber(spent.spentValue), 0)
     },
-    totalizerSpents() {
-      return Object.entries(
-        this.spents.reduce((acc, spent) => {
-          const category = spent.category;
-          const spentValue = Number(spent.spentValue);
-          acc[category] = (acc[category] || 0) + spentValue;
-          return acc;
-        }, {})
-      ).map(([category, spentValue]) => ({ category, spentValue }));
-    },
+    // totalizerSpents() {
+    //   return Object.entries(
+    //     this.spents.reduce((acc, spent) => {
+    //       const category = spent.category;
+    //       const spentValue = Number(spent.spentValue);
+    //       acc[category] = (acc[category] || 0) + spentValue;
+    //       return acc;
+    //     }, {})
+    //   ).map(([category, spentValue]) => ({ category, spentValue }));
+    // },
     ...mapGetters({
       getCategories: 'categories/getCategories'
     })
   }
-  // ,
-  // watch: {
-  //   month () {
-  //     console.log(this.spents);
-  //   }
-  // }
 }
 </script>
 <style>

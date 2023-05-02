@@ -93,10 +93,3 @@ export default {
   }
 }
 </script>
-<style>
-svg {
-  display: flex;
-  align-items: center;
-  padding-bottom: -5px;
-}
-</style>
