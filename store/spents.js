@@ -62,6 +62,33 @@ export const state = () => ({
       category: 'Lanche',
       spentValue: 49,
       creditCard: true
+    },
+    {
+      id: 3,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Machado Supermercado',
+      category: 'Alimentação',
+      spentValue: 390,
+      creditCard: true
+    },
+    {
+      id: 4,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Agua',
+      category: 'Água e Esgoto',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 4,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Lanche',
+      category: 'Lanche',
+      spentValue: 49,
+      creditCard: true
     }
   ]
 })
@@ -117,7 +144,7 @@ export const mutations = {
     if (!confirm('Tem certeza que deseja excluir este item ?')) return
     state.spentList.splice(state.spentList.indexOf(spent), 1)
   },
-  isACreditCardSpent(state, spent) {
+  isACreditCardSpent(_,spent) {
     spent.creditCard = !spent.creditCard
   }
 }

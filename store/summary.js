@@ -4,8 +4,8 @@ export const state = () => ({
 
 export const mutations = {
   addSummary(state, payload) {
-    console.log(payload, state.summaryList);
     state.summaryList = payload;
+    console.log(payload);
   },
   expand(_,totalize) {
     totalize.expanded = !totalize.expanded

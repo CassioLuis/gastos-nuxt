@@ -3,7 +3,7 @@
     <div class="flex flex-col justify-between h-full">
       <p class="text-center border-b border-gray-700 text-lg">Resumo</p>
       <div class="grow pt-4">
-        <TotalizerCard :totalizer="totalizerSpents" />
+        <TotalizerCard :totalizers="totalizerSpents" />
       </div>
       <div>
         <p class="text-center border-b border-gray-700 mb-4">Totais</p>
