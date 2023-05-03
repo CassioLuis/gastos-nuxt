@@ -90,6 +90,7 @@ export default {
       if (!this.inputValidation(this.spent)) return;
       this.$store.commit('spents/addSpent', this.spent);
       this.spent = {
+        id: uuidv4(),
         date: new Date().toISOString().substring(0, 10),
         description: '',
         category: this.spent.category,

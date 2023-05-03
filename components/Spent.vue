@@ -79,7 +79,6 @@ export default {
     classObj() {
       return {
         'rotate-180': this.sortDirection === 'asc'
-        // 'rorate-0': this.sortDirection === 'desc'
       }
     },
     newSortedSpentList() {

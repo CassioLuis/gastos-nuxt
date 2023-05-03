@@ -8,7 +8,8 @@ export const mutations = {
   },
   expand(state, totalize) {
     state.summaryList.forEach(item => {
-      if (item !== totalize) item.expanded = false
+      if (item === totalize) return
+      item.expanded = false
     })
     totalize.expanded = !totalize.expanded
   }
