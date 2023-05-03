@@ -4,11 +4,16 @@
       <thead class="text-lg text-left">
         <tr class="border-b border-gray-600">
           <th class="cursor-pointer w-1"></th>
-          <th class="cursor-pointer w-10" @click="sortBy('date')">Data <font-awesome-icon v-if="sortKey === 'date'" :icon="icon" size="xs" /></th>
-          <th class="cursor-pointer w-10" @click="sortBy('description')">Descrição <font-awesome-icon v-if="sortKey === 'description'" :icon="icon" size="xs" /></th>
-          <th class="cursor-pointer w-1" @click="sortBy('category')">Categoria <font-awesome-icon v-if="sortKey === 'category'" :icon="icon" size="xs" /></th>
-          <th class="cursor-pointer w-1 text-center" @click="sortBy('quota')">Parc. <font-awesome-icon v-if="sortKey === 'quota'" :icon="icon" size="xs" /></th>
-          <th class="cursor-pointer w-10 text-center" @click="sortBy('spentValue')">Valor <font-awesome-icon v-if="sortKey === 'spentValue'" :icon="icon" size="xs" /></th>
+          <th class="cursor-pointer w-10" @click="sortBy('date')">Data <font-awesome-icon 
+            v-if="sortKey === 'date'" :icon="['fas', 'sort-down']" :class="classObj" size="xs" /></th>
+          <th class="cursor-pointer w-10" @click="sortBy('description')">Descrição <font-awesome-icon
+              v-if="sortKey === 'description'" :icon="['fas', 'sort-down']" :class="classObj" size="xs" /></th>
+          <th class="cursor-pointer w-1" @click="sortBy('category')">Categoria <font-awesome-icon
+              v-if="sortKey === 'category'" :icon="['fas', 'sort-down']" :class="classObj" size="xs" /></th>
+          <th class="cursor-pointer w-1 text-center" @click="sortBy('quota')">Parc. <font-awesome-icon
+              v-if="sortKey === 'quota'" :icon="['fas', 'sort-down']" :class="classObj" size="xs" /></th>
+          <th class="cursor-pointer w-10 text-center" @click="sortBy('spentValue')">Valor <font-awesome-icon
+              v-if="sortKey === 'spentValue'" :icon="['fas', 'sort-down']" :class="classObj" size="xs" /></th>
           <th class="cursor-pointer w-1"></th>
         </tr>
       </thead>
@@ -20,9 +25,8 @@
           <td class="text-left text-xs text-gray-400">{{ item.presentationDate }}</td>
           <td>{{ item.description }}</td>
           <td>
-            <span
-              class="p-1 flex items-center justify-center rounded bg-red-400 text-xs font-semibold text-gray-200">{{
-                item.category }}</span>
+            <span class="p-1 flex items-center justify-center rounded bg-red-400 text-xs font-semibold text-gray-200">{{
+              item.category }}</span>
           </td>
           <td class="text-center">{{ item.presentationQuota }} </td>
           <td class="text-right">{{ convertToCurrency(item.spentValue) }} </td>
@@ -48,8 +52,7 @@ export default {
   data() {
     return {
       sortKey: '',
-      sortDirection: 'asc',
-      icon: ['fas', 'sort-up']
+      sortDirection: 'asc'
     }
   },
   methods: {
@@ -73,6 +76,12 @@ export default {
     }
   },
   computed: {
+    classObj() {
+      return {
+        'rotate-180': this.sortDirection === 'asc'
+        // 'rorate-0': this.sortDirection === 'desc'
+      }
+    },
     newSortedSpentList() {
       return this.spentList.sort((a, b) => {
         let modifier = 1;
@@ -83,12 +92,6 @@ export default {
         if (aValue > bValue) return 1 * modifier;
         return 0;
       });
-    }
-  },
-  watch: {
-    sortDirection() {
-      if (this.icon.includes('sort-down')) return this.icon[1] = 'sort-up'
-      if (this.icon.includes('sort-up')) return this.icon[1] = 'sort-down'
     }
   }
 }

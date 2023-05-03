@@ -5,9 +5,11 @@ export const state = () => ({
 export const mutations = {
   addSummary(state, payload) {
     state.summaryList = payload;
-    console.log(payload);
   },
-  expand(_,totalize) {
+  expand(state, totalize) {
+    state.summaryList.forEach(item => {
+      if (item !== totalize) item.expanded = false
+    })
     totalize.expanded = !totalize.expanded
   }
 }

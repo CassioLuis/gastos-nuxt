@@ -8,9 +8,9 @@
       </div>
       <TransitionGroup tag="ul" @before-enter="onBeforeEnter" @enter="onEnter" @before-leave="onBeforeLeave"
         @leave="onLeave">
-        <li v-if="totalizer.expanded" v-for="spent in totalizer.spents " :key="spent.id"
+        <li v-if="totalizer.expanded" v-for="spent in totalizer.spents " :key="totalizer.id"
           class="overflow-hidden flex justify-between gap-2 text-xs text-gray-400 border-gray-600">
-          <div class="flex justify-between p-4 items-center w-full">
+          <div :key="spent.id" class="flex justify-between p-4 items-center w-full">
             <span>{{ spent.description }}</span>
             <span>{{ convertToCurrency(spent.spentValue) }}</span>
           </div>
