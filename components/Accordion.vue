@@ -1,124 +1,53 @@
 <template>
   <div>
-    <div v-for="totalizer in computedTotalizers" :key="totalizer.id" class="accordion w-full">
-      <div class="flex justify-between cursor-pointer p-2 w-full" @click="expand(totalizer)">
-        <span name="header">{{ totalizer.category }}</span>
-        <span name="header">{{ convertToCurrency(totalizer.totalSpent) }}</span>
+    <div class="flex flex-col px-1 border rounded border-gray-600 mb-2">
+      <div @click="$emit('click')" class="flex justify-between p-2 cursor-pointer">
+        <slot name="accordion-tittle">Accordion-tittle</slot>
       </div>
-      <transition name="accordion" @before-enter="onBeforeEnter" @enter="onEnter" @before-leave="onBeforeLeave"
+      <TransitionGroup tag="ul" @before-enter="onBeforeEnter" @enter="onEnter" @before-leave="onBeforeLeave"
         @leave="onLeave">
-        <div class="body" v-show="totalizer.expanded" v-for="spent in totalizer.spents " :key="spent.id">
-          <div class="body-inner">
-            <span>{{ spent.description }}</span>
-            <span>{{ convertToCurrency(spent.spentValue) }}</span>
-          </div>
-        </div>
-      </transition>
+        <slot name="accordion-content"></slot>
+      </TransitionGroup>
     </div>
   </div>
 </template>
 <script>
-import { mapMutations } from 'vuex'
 
 export default {
-  name: 'TotalizerCard',
-  props: {
-    totalizers: {
-      type: Array,
-      required: true
-    }
-  },
+  name: 'Accordion',
   data() {
     return {
-      show: false
-    };
+      height: 0
+    }
   },
   methods: {
-    convertToCurrency(value) {
-      return parseFloat(value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    },
-    ...mapMutations({
-      expand: 'summary/expand',
-    }),
-    toggle() {
-      this.show = !this.show;
-    },
     onBeforeEnter(el) {
-      el.style.height = '0';
+      const { style } = el;
+      const styles = {
+        transitionDuration: '200ms',
+        height: '0',
+        opacity: '0'
+      };
+      Object.assign(style, styles);
     },
     onEnter(el) {
       el.style.height = el.scrollHeight + 'px';
+      setTimeout(() => {
+        el.style.opacity = '1'
+      }, 100)
     },
     onBeforeLeave(el) {
       el.style.height = el.scrollHeight + 'px';
     },
     onLeave(el) {
-      el.style.height = '0';
-    }
-  },
-  computed: {
-    computedTotalizers() {
-      return this.totalizers
+      const { style } = el;
+      const styles = {
+        transitionDuration: '200ms',
+        opacity: '0',
+        height: '0'
+      };
+      Object.assign(style, styles);
     }
   }
 }
 </script>
-<style>
-@import url('https://fonts.googleapis.com/css?family=Lato');
-
-.accordion {
-  max-width: 400px;
-  font-family: Lato;
-  margin-bottom: 20px;
-
-  background-color: #ec5366;
-  border-radius: 6px;
-}
-
-.accordion .header {
-  height: 40px;
-  line-height: 40px;
-  padding: 0 40px 0 8px;
-  position: relative;
-  color: #fff;
-  cursor: pointer;
-}
-
-.accordion .header-icon {
-  position: absolute;
-  top: 5px;
-  right: 8px;
-  transform: rotate(0deg);
-  transition-duration: 0.3s;
-}
-
-.accordion .body {
-  /*   display: none; */
-  overflow: hidden;
-  background-color: #fff;
-  border: 10px solid #ec5366;
-  border-top: 0;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-  transition: 100ms ease-out;
-}
-
-.accordion .body-inner {
-  padding: 8px;
-  overflow-wrap: break-word;
-  /*   white-space: pre-wrap; */
-}
-
-.accordion .header-icon.rotate {
-  transform: rotate(180deg);
-  transition-duration: 0.3s;
-}
-
-.accordion.purple {
-  background-color: #8c618d;
-}
-
-.accordion.purple .body {
-  border-color: #8c618d;
-}
-</style>

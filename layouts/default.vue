@@ -53,7 +53,7 @@ export default {
 }
 
 .btn {
-  @apply flex items-center rounded px-4 border border-gray-500 hover:border-gray-400 hover:rounded-sm bg-gray-800 hover:bg-gray-700 hover:text-gray-100 transition-all h-8
+  @apply cursor-pointer flex items-center rounded px-4 border border-gray-500 hover:border-gray-400 hover:rounded-sm bg-gray-800 hover:bg-gray-700 hover:text-gray-100 transition-all h-8
 }
 
 .input {

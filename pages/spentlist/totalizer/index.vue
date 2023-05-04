@@ -3,7 +3,21 @@
     <div class="flex flex-col justify-between h-full">
       <p class="text-center border-b border-gray-700 text-lg">Resumo</p>
       <div class="grow pt-4">
-        <TotalizerCard :totalizers="totalizerSpents" />
+        <Accordion v-for="totalizer in totalizerSpents" @click="expand(totalizer)">
+          <template #accordion-tittle>
+            <span>{{ totalizer.category }}</span>
+            <span>{{ convertToCurrency(totalizer.totalSpent) }}</span>
+          </template>
+          <template #accordion-content>
+            <li v-if="totalizer.expanded" v-for="spent in totalizer.spents" :key="spent.id"
+              class="overflow-hidden flex justify-between gap-2 text-xs text-gray-400 border-gray-600">
+              <div class="flex justify-between p-4 items-center w-full">
+                <span>{{ spent.description }}</span>
+                <span>{{ convertToCurrency(spent.spentValue) }}</span>
+              </div>
+            </li>
+          </template>
+        </Accordion>
       </div>
       <div>
         <p class="text-center border-b border-gray-700 mb-4">Totais</p>
@@ -20,13 +34,12 @@
   </div>
 </template>
 <script>
-import TotalizerCard from '../../../components/TotalizerCard.vue';
-import { mapGetters } from 'vuex'
+import Accordion from '../../../components/Accordion.vue';
+import { mapGetters, mapMutations } from 'vuex'
 import { v4 as uuidv4 } from 'uuid';
 
-
 export default {
-  components: { TotalizerCard },
+  components: { Accordion },
   props: {
     month: {
       type: String,
@@ -34,6 +47,9 @@ export default {
     }
   },
   methods: {
+    ...mapMutations({
+      expand: 'summary/expand',
+    }),
     convertToCurrency(value) {
       return parseFloat(value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     },
@@ -48,6 +64,9 @@ export default {
       }, 0)
       return this.convertToCurrency(debits)
     },
+    updateSummaryState() {
+      return this.$store.commit('summary/addSummary', this.totalizerSpents);
+    }
   },
   computed: {
     spents() {
@@ -55,16 +74,15 @@ export default {
     },
     totalizerSpents() {
       const categories = [...new Set(this.spents.map(spent => spent.category))];
-
       const totalizer = categories.map(category => {
-        const spentsForCategory = this.spents.filter(spent => spent.category === category);
-        const totalSpentForCategory = spentsForCategory.reduce((acc, spent) => acc + Number(spent.spentValue), 0);
+        const spentsByCategory = this.spents.filter(spent => spent.category === category);
+        const totalSpentByCategory = spentsByCategory.reduce((acc, spent) => acc + Number(spent.spentValue), 0);
         return {
           id: uuidv4(),
           category: category,
-          totalSpent: totalSpentForCategory,
+          totalSpent: totalSpentByCategory,
           expanded: false,
-          spents: spentsForCategory
+          spents: spentsByCategory
         };
       });
       return totalizer
@@ -73,9 +91,12 @@ export default {
       getCategories: 'categories/getCategories'
     })
   },
+  beforeMount() {
+    this.updateSummaryState()
+  },
   watch: {
     spents() {
-      this.$store.commit('summary/addSummary', this.totalizerSpents);
+      this.updateSummaryState()
     }
   }
 }
