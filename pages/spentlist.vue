@@ -1,7 +1,7 @@
 <template>
-  <div class="flex w-full gap-3">
-    <div class="flex flex-col grow basis-1 gap-3">
-      <div class="flex h-16 border rounded border-gray-500 p-1 items-center">
+  <div class="flex w-full h-screen gap-3 mb-4">
+    <div class="flex flex-col h-full grow basis-1 gap-3">
+      <div class="flex border rounded border-gray-500 p-1 items-center">
         <font-awesome-icon :icon="['fas', 'chevron-right']" @click="previosMonth"
           class="rotate-180 cursor-pointer text-xl hover:text-gray-100 transition-all px-2 py-4 h-full rounded-r" />
         <DatePicker v-model="month" type="month" value-type class="flex-grow basis-1 h-full text-center cursor-pointer" />
@@ -10,18 +10,16 @@
         <div class="flex items-center justify-center flex-grow basis-1 h-full font-semibold">{{
           convertToCurrency(sumTotal) }}</div>
       </div>
-      <div class="flex flex-col gap-4 p-4 border rounded border-gray-500">
-        <transition>
-          <div class="flex flex-col overflow-y-auto h-[500px]">
-            <Spent :spent-list="spents" />
-          </div>
-        </transition>
+      <div class="flex flex-col h-full gap-2 p-4 border rounded border-gray-500">
+        <div class="flex flex-col grow basis-1 overflow-y-auto">
+          <Spent :spent-list="spents" />
+        </div>
         <div>
           <SpentAdd />
         </div>
       </div>
     </div>
-    <div class="flex flex-col justify-between border-gray-500 flex-grow basis-1 border rounded p-4 font-semibold">
+    <div class="flex flex-col justify-between border-gray-500 grow basis-1 border rounded p-4 font-semibold">
       <div class="pb-2 flex gap-1">
         <NuxtLink v-for="{ name, route, id } in menuItens" :key="id" :to="route" class="btn">
           {{ name }}
@@ -119,7 +117,11 @@ export default {
   }
 }
 </script>
-<style>
+<style>¨
+.mx-datepicker {
+  width: 100% !important;
+}
+
 .mx-input {
   @apply h-full w-full cursor-pointer text-center font-semibold text-sm bg-gray-800 text-white rounded border border-gray-600
 }

@@ -2,14 +2,14 @@
   <div class="w-full font-semibold">
     <div class="flex flex-col gap-2 border-t border-gray-700 pt-4" v-show="showForm">
       <div class="flex gap-2 text-gray-300 text-sm">
-        <div class="flex flex-col grow">
+        <div class="flex flex-col grow basis-1">
           <label for="date">Data:</label>
-          <DatePicker id="date" v-model="spent.date" valueType="format"
-            class="w-full text-center mb-2 h-8" />
+          <DatePicker id="date" v-model="spent.date" valueType="format" class="h-8 mb-2"/>
           <label for="description">Descrição:</label>
-          <input id="description" type="text" v-model="spent.description" v-focus class="input">
+          <input id="description" type="text" v-model="spent.description" v-focus
+          class="input border">
         </div>
-        <div class="flex flex-col grow">
+        <div class="flex flex-col grow basis-1">
           <div class="flex flex-col grow">
             <label for="categories">Categoria:</label>
             <Selector :options="categories" v-model="spent.category" class="input" />
@@ -21,8 +21,7 @@
             </div>
             <div class="flex flex-col grow">
               <label for="spentValue">Valor:</label>
-              <input id="spentValue" type="number" v-model="spent.spentValue" @keyup.enter="addSpent"
-                class="input">
+              <input id="spentValue" type="number" v-model="spent.spentValue" @keyup.enter="addSpent" class="input">
             </div>
           </div>
         </div>
@@ -110,3 +109,9 @@ export default {
   }
 }
 </script>
+<style>
+/* .mx-datepicker,
+.mx-input {
+  @apply h-full w-full cursor-pointer text-center font-semibold text-sm bg-gray-800 text-white rounded border border-gray-600
+} */
+</style>

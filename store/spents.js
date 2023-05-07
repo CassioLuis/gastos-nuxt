@@ -89,6 +89,204 @@ export const state = () => ({
       category: 'Lanche',
       spentValue: 49,
       creditCard: true
+    },
+    {
+      id: 9,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Agua',
+      category: 'Água e Esgoto',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 10,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Lanche',
+      category: 'Lanche',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 9,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Agua',
+      category: 'Água e Esgoto',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 10,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Lanche',
+      category: 'Lanche',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 9,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Agua',
+      category: 'Água e Esgoto',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 10,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Lanche',
+      category: 'Lanche',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 9,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Agua',
+      category: 'Água e Esgoto',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 10,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Lanche',
+      category: 'Lanche',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 9,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Agua',
+      category: 'Água e Esgoto',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 10,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Lanche',
+      category: 'Lanche',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 9,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Agua',
+      category: 'Água e Esgoto',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 10,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Lanche',
+      category: 'Lanche',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 9,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Agua',
+      category: 'Água e Esgoto',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 10,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Lanche',
+      category: 'Lanche',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 9,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Agua',
+      category: 'Água e Esgoto',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 10,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Lanche',
+      category: 'Lanche',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 9,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Agua',
+      category: 'Água e Esgoto',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 10,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Lanche',
+      category: 'Lanche',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 9,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Agua',
+      category: 'Água e Esgoto',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 10,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Lanche',
+      category: 'Lanche',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 9,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Agua',
+      category: 'Água e Esgoto',
+      spentValue: 49,
+      creditCard: true
+    },
+    {
+      id: 10,
+      presentationDate: '4 MAI.',
+      date: '2023-05-04',
+      description: 'Lanche',
+      category: 'Lanche',
+      spentValue: 49,
+      creditCard: true
     }
   ]
 })

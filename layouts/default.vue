@@ -2,8 +2,7 @@
   <div class="flex justify-center pt-4 bg-gray-800 h-screen text-gray-300 font-roboto overflow-auto antialiased">
     <div class="flex flex-col justify-start w-[1200px]">
       <div class="pb-2 flex gap-1 w-full">
-        <NuxtLink v-for="{ name, route, id } in menuItens" :key="id" :to="route"
-          class="btn">
+        <NuxtLink v-for="{ name, route, id } in menuItens" :key="id" :to="route" class="btn">
           {{ name }}
         </NuxtLink>
       </div>
@@ -32,6 +31,11 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Domine&family=Roboto&display=swap');
+
+.mx-datepicker {
+  width: 100% !important;
+}
+
 /* width */
 ::-webkit-scrollbar {
   @apply w-2 rounded

@@ -3,7 +3,7 @@
     <div class="flex flex-col justify-between h-full">
       <p class="text-center border-b border-gray-700 text-lg">Resumo</p>
       <div class="grow pt-4">
-        <Accordion v-for="totalizer in totalizerSpents" @click="expand(totalizer)">
+        <Accordion v-for="totalizer in totalizerSpents" :key="totalizer.id" @click="expand(totalizer)">
           <template #accordion-tittle>
             <span>{{ totalizer.category }}</span>
             <span>{{ convertToCurrency(totalizer.totalSpent) }}</span>
