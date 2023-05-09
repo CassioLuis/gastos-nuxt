@@ -3,18 +3,12 @@
     <table class="h-full w-full rounded">
       <thead class="text-lg text-left">
         <tr class="border-b border-gray-600">
-          <th class="cursor-pointer w-1"></th>
-          <th class="cursor-pointer w-10" @click="sortBy('date')">Data <font-awesome-icon 
-            v-if="sortKey === 'date'" :icon="['fas', 'sort-down']" :class="classObj" size="xs" /></th>
-          <th class="cursor-pointer w-10" @click="sortBy('description')">Descrição <font-awesome-icon
-              v-if="sortKey === 'description'" :icon="['fas', 'sort-down']" :class="classObj" size="xs" /></th>
-          <th class="cursor-pointer w-1" @click="sortBy('category')">Categoria <font-awesome-icon
-              v-if="sortKey === 'category'" :icon="['fas', 'sort-down']" :class="classObj" size="xs" /></th>
-          <th class="cursor-pointer w-1 text-center" @click="sortBy('quota')">Parc. <font-awesome-icon
-              v-if="sortKey === 'quota'" :icon="['fas', 'sort-down']" :class="classObj" size="xs" /></th>
-          <th class="cursor-pointer w-10 text-center" @click="sortBy('spentValue')">Valor <font-awesome-icon
-              v-if="sortKey === 'spentValue'" :icon="['fas', 'sort-down']" :class="classObj" size="xs" /></th>
-          <th class="cursor-pointer w-1"></th>
+          <th v-for="(tableHeader, index) in tableHeaders" :key="index" :class="tableHeader.classStyle"
+            @click="sortBy(tableHeader.originalName)">
+            {{ tableHeader.presentationName }}
+            <font-awesome-icon v-if="sortKey === tableHeader.originalName" :icon="tableHeader.icon" :class="iconRotate"
+              size="xs" />
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -52,7 +46,49 @@ export default {
   data() {
     return {
       sortKey: '',
-      sortDirection: 'asc'
+      sortDirection: 'asc',
+      tableHeaders: [
+        {
+          presentationName: '',
+          classStyle: 'cursor-pointer w-1 text-transparent',
+          icon: ['fas', 'sort-down']
+        },
+        {
+          presentationName: 'Data',
+          originalName: 'date',
+          classStyle: 'cursor-pointer w-10',
+          icon: ['fas', 'sort-down'],
+        },
+        {
+          presentationName: 'Descrição',
+          originalName: 'description',
+          classStyle: 'cursor-pointer w-10',
+          icon: ['fas', 'sort-down'],
+        },
+        {
+          presentationName: 'Categoria',
+          originalName: 'category',
+          classStyle: 'cursor-pointer w-1',
+          icon: ['fas', 'sort-down']
+        },
+        {
+          presentationName: 'Parc.',
+          originalName: 'quota',
+          classStyle: 'cursor-pointer w-1 text-center',
+          icon: ['fas', 'sort-down']
+        },
+        {
+          presentationName: 'Valor',
+          originalName: 'spentValue',
+          classStyle: 'cursor-pointer w-10 text-right',
+          icon: ['fas', 'sort-down']
+        },
+        {
+          presentationName: '',
+          classStyle: 'cursor-pointer w-1 text-transparent',
+          icon: ['fas', 'sort-down']
+        },
+      ]
     }
   },
   methods: {
@@ -76,7 +112,7 @@ export default {
     }
   },
   computed: {
-    classObj() {
+    iconRotate() {
       return {
         'rotate-180': this.sortDirection === 'asc'
       }

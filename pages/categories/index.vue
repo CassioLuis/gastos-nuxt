@@ -1,41 +1,54 @@
 <template>
-  <div class="p-4 border rounded w-full">
-    <input @keyup.enter="addCategory" v-model="category.name" placeholder="Digite uma categoria e pressione enter!"
-      class="w-full p-2 text-black rounded mb-4">
-    <table class="w-full rounded">
-      <thead class="text-xl border-b border-gray-600">
-        <tr>
-          <th>Outros</th>
-          <th class="text-left">Descrição</th>
-          <th>Remover</th>
-        </tr>
-      </thead>
-      <tbody class="text-sm">
-        <tr v-for="item in categories">
-          <td class="text-center">
-            <input type="checkbox" class="cursor-pointer" :checked="item.otherPeople" @change="isToAnotherPeopleCategory(item)">
-          </td>
-          <td>{{ item.name }}</td>
-          <td class="text-center">
-            <font-awesome-icon class="cursor-pointer text-red-400" :icon="['fas', 'trash-can']" @click="remove(item)" />
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="p-4 border rounded w-[100%] h-auto">
+    <div class="flex gap-4">
+      <input @keyup.enter="addCategory" v-model="category.name" placeholder="Digite uma categoria e pressione enter!"
+        class="w-full p-2 text-black rounded">
+    </div>
+    <div class="overflow-auto">
+      <table class="w-full rounded">
+        <thead class="text-xl block pt-4">
+          <tr class="flex border-b border-gray-600 py-2">
+            <!-- <th>Outros</th> -->
+            <th class="grow basis-1 text-left">Descrição</th>
+            <th class="grow basis-1 text-center">Sub-Categoria</th>
+            <th class="grow basis-1 text-center"></th>
+          </tr>
+        </thead>
+        <tbody class="text-sm max-h-[70vh] flex flex-col overflow-y-scroll pr-4">
+          <tr v-for="item in categories" class="flex py-1 font-semibold border-b border-gray-600 px-4">
+            <!-- <td class="text-center">
+                <input type="checkbox" class="cursor-pointer" :checked="item.otherPeople"
+                  @change="isToAnotherPeopleCategory(item)">
+              </td> -->
+            <td class="grow basis-1 flex items-center">{{ item.name }}</td>
+            <td class="grow basis-1 flex items-center justify-center">
+              <Selector helperMsg="Por favor, escolha uma opção..." :required="true" :options="subCategories"
+                class="h-8 px-2 bg-gray-800 text-white border rounded border-gray-600 cursor-pointer" />
+            </td>
+            <td class="grow basis-1 flex items-center justify-end">
+              <font-awesome-icon class="cursor-pointer text-red-400" :icon="['fas', 'trash-can']" @click="remove(item)" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 <script>
 import { mapMutations } from 'vuex'
+import Selector from '../../components/Selector.vue'
 
 export default {
   name: 'spentlist',
   layout: 'default',
+  components: { Selector },
   data() {
     return {
       category: {
         name: '',
         otherPeople: false
-      }
+      },
+      subCategories: ['Essencial', 'Dispensaveis', 'Outros', 'Eventuais']
     }
   },
   computed: {
@@ -58,3 +71,11 @@ export default {
   }
 }
 </script>
+<style>
+td,
+th {
+  /* padding: 5px;
+  width: 30%; */
+  /* border: 1px solid white; */
+}
+</style>
