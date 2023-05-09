@@ -48,7 +48,7 @@ export default {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-500 rounded-sm
+  @apply bg-gray-500 rounded-sm box-border
 }
 
 /* Handle on hover */
