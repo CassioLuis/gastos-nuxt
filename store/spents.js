@@ -292,7 +292,7 @@ export const state = () => ({
 })
 
 export const mutations = {
-  convertDateStringToUTCDate (param) {
+  convertDateStringToUTCDate(param) {
     return new Date(Date.UTC(
       Number(param.substring(0, 4)),
       Number(param.substring(5, 7)) - 1,
@@ -312,15 +312,16 @@ export const mutations = {
     return `${day} ${month.toUpperCase()}.`
   },
 
-  createNextSpentsForQuotas (param) {
+  createNextSpentsForQuotas(param) {
     const quantityOfParc = parseInt(param.quota)
     const date = mutations.convertDateStringToUTCDate(param.date)
-    let month = date.getMonth();
+    let month = date.getMonth() - 1;
+    const day = date.getDate();
     const newArrPayload = []
     for (let i = 1; i <= quantityOfParc; i++) {
-      const nextMonth = date.setMonth(month + i - 1)
-      const newDate = new Date(nextMonth)
-      const converted = newDate.toISOString().substring(0,10)
+      month += 1;
+      const newDate = new Date(date.getFullYear(), month, day);
+      const converted = newDate.toISOString().substring(0, 10)
       const newPayload = {
         ...param,
         date: converted,
@@ -333,8 +334,8 @@ export const mutations = {
   },
 
   addSpent(state, payload) {
-    if (!payload.quota)
-    return state.spentList.push({ ...payload, presentationDate: mutations.convertDateToStringDate(payload.date) })
+    const newPayloadWithNoQuotas = { ...payload, presentationDate: mutations.convertDateToStringDate(payload.date) }
+    if (!payload.quota) return state.spentList.push(newPayloadWithNoQuotas)
     return state.spentList.push(...mutations.createNextSpentsForQuotas(payload));
   },
 
@@ -342,7 +343,7 @@ export const mutations = {
     if (!confirm('Tem certeza que deseja excluir este item ?')) return
     state.spentList.splice(state.spentList.indexOf(spent), 1)
   },
-  isACreditCardSpent(_,spent) {
+  isACreditCardSpent(_, spent) {
     spent.creditCard = !spent.creditCard
   }
 }

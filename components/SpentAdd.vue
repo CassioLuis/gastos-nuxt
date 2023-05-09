@@ -16,7 +16,8 @@
           <div class="flex grow gap-2">
             <div class="flex flex-col grow justify-between">
               <label for="spentValue">Parc:</label>
-              <Selector :options="generateQuota" v-model="spent.quota" class="input" @keyup.enter="addSpent" />
+              <Selector :options="generateQuota" v-model="spent.quota" :value="spent.quota" class="input"
+                @keyup.enter="addSpent" />
             </div>
             <div class="flex flex-col grow">
               <label for="spentValue">Valor:</label>

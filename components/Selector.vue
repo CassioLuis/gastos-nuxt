@@ -1,6 +1,7 @@
 <template>
   <select v-model="selectedOption" :class="conditionalStyle">
-    <option v-if="this.required" :value="selectedOption" selected hidden class="text-red-500">{{ this.selectedOption }}</option>
+    <option v-if="this.required" :value="selectedOption" selected hidden class="text-red-500">{{ this.selectedOption }}
+    </option>
     <option v-for="option in options" :value="option.name || option" class="text-lg">{{ option.name || option }}</option>
   </select>
 </template>
@@ -14,6 +15,9 @@ export default {
     },
     required: {
       type: Boolean
+    },
+    value: {
+      type: String
     }
   },
   data() {
@@ -30,6 +34,9 @@ export default {
   watch: {
     selectedOption(newValue) {
       this.$emit('input', newValue)
+    },
+    value() {
+      this.selectedOption = this.value
     }
   }
 }
