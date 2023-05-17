@@ -36,6 +36,7 @@ import DatePicker from 'vue2-datepicker';
 import 'vue2-datepicker/index.css';
 import 'vue2-datepicker/locale/pt-br';
 import { mapGetters } from 'vuex'
+import { getAllSpents } from '../services/spents.services.js'
 
 export default {
   components: { SpentAdd, Spent, DatePicker },
@@ -56,7 +57,19 @@ export default {
       ]
     }
   },
+  // async asyncData({ $axios }) {
+  //   const posts = await $axios.$get('spents')
+  //   console.log(posts);
+  //   return { posts }
+  // },
+  mounted() {
+    this.findAllSpents()
+  },
   methods: {
+    async findAllSpents() {
+      const response = await getAllSpents();
+      console.log(response.data.results);
+    },
     convertToCurrency(value) {
       return parseFloat(value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     },
@@ -117,8 +130,8 @@ export default {
   }
 }
 </script>
-<style>¨
-.mx-datepicker {
+<style>
+¨ .mx-datepicker {
   width: 100% !important;
 }
 

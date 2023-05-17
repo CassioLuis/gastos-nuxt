@@ -1,3 +1,5 @@
+import Dotenv from 'dotenv-webpack'
+
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -41,11 +43,22 @@ export default {
     '@nuxtjs/composition-api/module'
   ],
 
+
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-  ],
+  modules: ['@nuxtjs/axios'],
+  axios: {
+    baseURL: 'https://spent-api-3yrl.onrender.com/'
+  },
+
+  publicRuntimeConfig: {
+    spents: process.env.SPENT_API
+  },
+  privateRuntimeConfig: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    extend(config) {
+      config.plugins.push(new Dotenv({ silent: true }));
+    }
   }
 }
